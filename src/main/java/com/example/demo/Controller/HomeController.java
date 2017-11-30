@@ -2,6 +2,8 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entity.Course;
 import com.example.demo.Entity.Student;
+import com.example.demo.Repository.CourseRepository;
+import com.example.demo.Repository.InstructorRepository;
 import com.example.demo.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,12 @@ public class HomeController {
     @Autowired
     StudentRepository studentRepository;
 
+    @Autowired
+    InstructorRepository instructorRepository;
+
+    @Autowired
+    CourseRepository courseRepository;
+
     @RequestMapping("/")
 
     public String index(Model model)
@@ -35,7 +43,8 @@ public class HomeController {
 
     public String addStudentForm(Model model)
     {
-        model.addAttribute("student", new Course());
+        Student student= new Student();
+        model.addAttribute("student", student);
 
         return "studentForm";
     }

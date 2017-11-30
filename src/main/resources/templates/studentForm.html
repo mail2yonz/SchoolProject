@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="#" th:action=" @{/addStudent}" th:object="student" method="post">
+<form action="#" th:action="@{/addStudent}" th:object="${student}" method="post">
 
     <label>FirstName:</label><input type="text" th:field="*{fname}"/>
     <span th:if="${#fields.hasErrors('fname' )}" th:errors="*{fname}"></span><br/>

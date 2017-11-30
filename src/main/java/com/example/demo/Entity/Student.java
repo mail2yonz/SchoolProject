@@ -18,10 +18,20 @@ public class Student {
 
     private String email;
 
-    @ManyToMany
-    @JoinTable(name="student_course",joinColumns = @JoinColumn(name="student_id",referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name="COURSE_ID",referencedColumnName = "ID"))
+    @ManyToMany(mappedBy = "students")
     Set<Course> courses;
+
+    public Student() {
+    }
+
+    public Student(String fname, String lname, String contact, String email, Set<Course> courses) {
+        this.fname = fname;
+        this.lname = lname;
+        this.contact = contact;
+        this.email = email;
+        this.courses = courses;
+    }
+
 
     public long getId() {
         return id;

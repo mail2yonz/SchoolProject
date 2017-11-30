@@ -16,13 +16,29 @@ public class Course {
     private String description;
 
     @ManyToMany
-    @JoinTable(name="course_student",joinColumns = @JoinColumn(name="course_id",referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name="STUDENT_ID",referencedColumnName = "ID"))
     private Set<Student> students;
 
     @ManyToMany(mappedBy = "courses")
     private Set<Instructor> instructors;
 
+    public Course() {
+    }
+
+    public Course(String title, String courseNumber, String description, Set<Student> students, Set<Instructor> instructors) {
+        this.title = title;
+        this.courseNumber = courseNumber;
+        this.description = description;
+        this.students = students;
+        this.instructors = instructors;
+    }
+
+    public Set<Instructor> getInstructors() {
+        return instructors;
+    }
+
+    public void setInstructors(Set<Instructor> instructors) {
+        this.instructors = instructors;
+    }
 
     public Set<Student> getStudents() {
         return students;

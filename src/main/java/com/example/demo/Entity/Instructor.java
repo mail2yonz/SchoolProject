@@ -19,9 +19,19 @@ public class Instructor {
     private String email;
 
     @ManyToMany
-    @JoinTable(name="instructor_course",joinColumns = @JoinColumn(name="instructor_id",referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name="COURSE_ID",referencedColumnName = "ID"))
-    private Set<Course> courses;
+   private Set<Course> courses;
+
+    public Instructor() {
+    }
+
+    public Instructor(String fname, String lname, String contactNumber, String email, Set<Course> courses) {
+        this.fname = fname;
+        this.lname = lname;
+        this.contactNumber = contactNumber;
+        this.email = email;
+        this.courses = courses;
+    }
+
 
     public long getId() {
         return id;
@@ -61,6 +71,14 @@ public class Instructor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     public void addCourse(Course course)
