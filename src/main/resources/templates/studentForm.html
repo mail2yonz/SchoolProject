@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action=" @{/addStudent}" th:object="student" method="post">
+
+    <label>FirstName:</label><input type="text" th:field="*{fname}"/>
+    <span th:if="${#fields.hasErrors('fname' )}" th:errors="*{fname}"></span><br/>
+
+    <label>LastName:</label><input type="text" th:field="*{lname}"/>
+    <span th:if="${#fields.hasErrors('lname' )}" th:errors="*{lname}"></span><br/>
+
+    <label>Contact:</label><input type="text" th:field="*{contact}"/>
+    <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></span><br/>
+
+
+    <label>Email:</label><input type="text" th:field="*{email}"/>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br/>
+
+    <input type="submit" value="Submit"/>
+
+</form >
+
+</body>
+</html>
