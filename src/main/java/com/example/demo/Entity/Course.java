@@ -15,7 +15,9 @@ public class Course {
 
     private String description;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany
+    @JoinTable(name="course_student",joinColumns = @JoinColumn(name="course_id",referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name="STUDENT_ID",referencedColumnName = "ID"))
     private Set<Student> students;
 
     @ManyToMany(mappedBy = "courses")
@@ -60,5 +62,10 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void addStudent(Student student)
+    {
+        students.add(student);
     }
 }
