@@ -1,9 +1,6 @@
 package com.example.demo.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -21,6 +18,9 @@ public class Instructor {
 
     private String email;
 
+    @ManyToMany
+    @JoinTable(name="instructor_course",joinColumns = @JoinColumn(name="instructor_id",referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name="COURSE_ID",referencedColumnName = "ID"))
     private Set<Course> courses;
 
     public long getId() {

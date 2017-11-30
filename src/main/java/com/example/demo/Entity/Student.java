@@ -1,9 +1,6 @@
 package com.example.demo.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -21,7 +18,10 @@ public class Student {
 
     private String email;
 
-    Set<Course> students;
+    @ManyToMany
+    @JoinTable(name="student_course",joinColumns = @JoinColumn(name="student_id",referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name="COURSE_ID",referencedColumnName = "ID"))
+    Set<Course> courses;
 
     public long getId() {
         return id;
@@ -59,12 +59,12 @@ public class Student {
         this.email = email;
     }
 
-    public Set<Course> getStudents() {
-        return students;
+    public Set<Course> getCourses() {
+        return courses;
     }
 
-    public void setStudents(Set<Course> students) {
-        this.students = students;
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     public void setFname(String fname) {
@@ -73,6 +73,6 @@ public class Student {
 
     public void addcourse(Course course)
     {
-        students.add(course);
+        courses.add(course);
     }
 }

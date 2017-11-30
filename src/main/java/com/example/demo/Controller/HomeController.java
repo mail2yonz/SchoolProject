@@ -22,8 +22,11 @@ public class HomeController {
 
     @RequestMapping("/")
 
-    public String index()
+    public String index(Model model)
     {
+
+        model.addAttribute("students",studentRepository.findAll());
+
         return "index";
     }
 

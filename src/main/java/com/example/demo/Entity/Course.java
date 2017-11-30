@@ -1,9 +1,7 @@
 package com.example.demo.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -16,6 +14,21 @@ public class Course {
     private String courseNumber;
 
     private String description;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Student> students;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Instructor> instructors;
+
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
     public long getId() {
         return id;
